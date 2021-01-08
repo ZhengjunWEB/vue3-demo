@@ -1,0 +1,76 @@
+// .el-main {
+//   background-color: $bg;
+// }
+.el-container {
+  background-color: $bg;
+  height: calc(100vh - 90px);
+}
+.el-header {
+  background-color: $PrimaryD;
+  margin-bottom: 10px;
+}
+.el-aside {
+  background-color: #fff;
+  margin: 0 10px;
+}
+.el-main {
+  padding: 0;
+  background-color: #fff;
+}
+.el-pagination {
+  text-align: center;
+  margin-top: 15px;
+}
+.el-menu {
+  border: none;
+}
+.el-menu-vertical-demo {
+  user-select: none;
+}
+.el-table {
+  .cell {
+    text-align: center;
+  }
+  th,td {
+    padding: 4px 0;
+    font-size: 12px;
+  }
+}
+.el-col {
+  .label {
+    margin-right: 10px;
+  }
+}
+.el-input--mini .el-input__inner,
+.el-date-editor,
+.el-select .el-input.is-focus .el-input__inner,
+.el-select .el-input__inner:focus,
+.el-range-editor.is-active, .el-range-editor.is-active:hover,
+.el-input__inner:hover {
+  border-color: $PrimaryM;
+}
+.el-select {
+  margin-bottom: 15px;
+}
+.el-select:hover .el-input__inner {
+  border-color: $PrimaryD !important;
+}
+.el-menu-item:hover {
+  background-color: $PrimaryL;
+}
+.el-menu-item.is-active {
+  background-color: $PrimaryD;
+  color: #fff;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.el-date-editor--daterange.el-input__inner {
+  width: 240px;
+}
+.el-col {
+  margin-bottom: 0 !important;
+}
