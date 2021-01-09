@@ -96,12 +96,13 @@ export default {
   position: relative;
   display: inline-block;
   border: 1px solid $PrimaryM;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 5px;
+  vertical-align: top;
   input {
     text-align: center;
     font-size: 12px;
-    width: 80px;
+    width: 82px;
     border: none;
     outline: none;
   }
