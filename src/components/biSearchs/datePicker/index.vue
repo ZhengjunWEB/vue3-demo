@@ -5,8 +5,11 @@
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
       </el-option>
     </el-select>
-    <el-date-picker size="mini" v-model="dateValue" type="daterange" @change="datechange" >
-    </el-date-picker>
+    <el-date-picker v-if="value == 'day'" size="mini" v-model="dateValue" type="daterange" @change="datechange" />
+    <el-date-picker v-if="value == 'week'" size="mini" v-model="dateValue" type="daterange" format="YYYY-ww周" @change="datechange" />
+    <el-date-picker v-if="value == 'month'" size="mini" v-model="dateValue" type="monthrange" format="YYYY-MM月" @change="datechange" />
+    <bi-quarter v-if="value == 'quarter'"  v-model="dateValue" />
+    <el-date-picker v-if="value == 'year'" size="mini" v-model="dateValue" type="yearrang" format="YYYY-MM月" @change="datechange" />
   </el-col>
 </template>
 <script >
@@ -51,11 +54,15 @@ export default {
       value: 'day',
       dateValue: []
     })
+    watch(() => state.value, () => {
+      state.dateValue = []
+    })
     const getPara = () => {
       let data = {par:{},state:props.inQuery}
       data.par[props.key] = state.value
-      state.dateValue.length == 2 && (data.par[props.startDate] = state.dateValue[0])
-      state.dateValue.length == 2 && (data.par[props.endDate] = state.dateValue[1])
+      let status = state.dateValue.length == 2
+     status && (data.par[props.startDate] = state.dateValue[0])
+     status && (data.par[props.endDate] = state.dateValue[1])
       return data
     }
     const datechange = (v) => {
@@ -63,8 +70,7 @@ export default {
         return
       }
       let res = dateFormat(state.value, v, formatType())
-      console.log(res);
-      state.dateValue = res[1]
+      state.dateValue = res
     }
     const formatType = () => {
       let k = options.find( (item) => {
@@ -72,10 +78,14 @@ export default {
       })
       return k.format
     }
+    const abc = (d) => {
+      console.log(d);
+    }
     return {
       getPara,
       options,
       datechange,
+      abc,
       ...toRefs(state)
     }
   }

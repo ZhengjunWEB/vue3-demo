@@ -1,5 +1,6 @@
 import cusFrom from './cusFrom/index.vue' // 客户来源
 import datePicker from './datePicker/index.vue' // 客户来源
+import biQuarter from './quarterr/index.vue'
 // import isTax from './isTax.vue' // 是否含税
 // import reportType from './reportType.vue' // 报表类型
 // import feeType from './feeType.vue' // 费用类型
@@ -26,6 +27,7 @@ const biSearchs = {
     install(Vue) {
         Vue.component('cusfrom', cusFrom)
         Vue.component('datePicker', datePicker)
+        Vue.component('biQuarter', biQuarter)
     }
 }
 export default biSearchs

@@ -5,7 +5,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    redirect: '/home'
+    redirect: '/home/overview'
   },
   {
     path: '/home',
@@ -17,8 +17,18 @@ const routes = [
         component: () => import('@/views/overview/index.vue')
       },
       ...business
+
     ]
-  }
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/404/index.vue')
+  },
+  {
+    path: '/:pathMatch(.*)',
+    redirect: '/404'
+}
 ]
 
 const router = createRouter({

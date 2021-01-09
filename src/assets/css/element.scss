@@ -68,9 +68,24 @@
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
-.el-date-editor--daterange.el-input__inner {
-  width: 240px;
+.el-date-editor.el-input__inner {
+  width: 240px !important;
 }
 .el-col {
   margin-bottom: 0 !important;
+}
+.el-button--bi {
+  color: #fff;
+  background-color: $PrimaryD;
+  border-color: $PrimaryD;
+  &:hover {
+    background-color: $PrimaryM;
+    border-color: $PrimaryM;
+    color: #fff;
+  }
+  &:active {
+    color: #fff;
+    background-color: $PrimaryD;
+    border-color: $PrimaryD;
+  }
 }
