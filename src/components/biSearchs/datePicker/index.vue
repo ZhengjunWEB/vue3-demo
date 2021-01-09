@@ -9,7 +9,7 @@
     <el-date-picker v-if="value == 'week'" size="mini" v-model="dateValue" type="daterange" format="YYYY-ww周" @change="datechange" />
     <el-date-picker v-if="value == 'month'" size="mini" v-model="dateValue" type="monthrange" format="YYYY-MM月" @change="datechange" />
     <bi-quarter v-if="value == 'quarter'"  v-model="dateValue" />
-    <el-date-picker v-if="value == 'year'" size="mini" v-model="dateValue" type="yearrang" format="YYYY-MM月" @change="datechange" />
+    <bi-year v-if="value == 'year'"  v-model="dateValue" />
   </el-col>
 </template>
 <script >
