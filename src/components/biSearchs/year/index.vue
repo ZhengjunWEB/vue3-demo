@@ -16,13 +16,16 @@
         <button class="el-icon-arrow-right" @click="next" />
       </div>
       <div>
-        <table>
-          <tbody>
-            <tr><td>{{year - 11}}</td><td>{{year - 10}}</td><td>{{year - 9}}</td><td>{{year - 8}}</td></tr>
-            <tr><td>{{year - 6}}</td><td>{{year - 6}}</td><td>{{year - 5}}</td><td>{{year - 4}}</td></tr>
-            <tr><td>{{year - 3}}</td><td>{{year - 2}}</td><td>{{year - 1}}</td><td>{{year}}</td></tr>
-          </tbody>
-        </table>
+        <el-row :gutter="10">
+          <el-col :span="8" v-for="i in 12" :key="i">
+            <div
+              class="item"
+              :class="{ select: selected(item(i)) }"
+              @click="select(item(i))"
+              v-html="item(i)"
+            ></div>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </div>
@@ -34,26 +37,44 @@ var moment = require("moment");
 import { reactive, toRefs, computed } from "vue";
 export default {
   props: {
-      modelVlue: Array
+    modelVlue: Array,
   },
   setup(props, ctx) {
     const state = reactive({
       year: moment().format("YYYY"),
       iptData: [],
-      is_select: new Array(4),
+      is_select: [],
       show: false,
     });
     let temporary = [];
-    let date = [];
     const prev = () => {
       state.year = state.year * 1 - 12;
     };
     const next = () => {
       state.year = state.year * 1 + 12;
     };
-    const dateArr = computed( () => {
-
-    })
+    const item = (i) => {
+      return state.year - (12 - i);
+    };
+    const select = (i) => {
+     temporary.push(i);
+      if (temporary.length == 2) {
+        if (temporary[0] > temporary[1]) {
+          temporary.reverse();
+        }
+        state.show = false;
+        state.iptData = temporary
+        state.is_select[0] = temporary[0]+'-1-1'
+        state.is_select[1] = temporary[1]+'-12-31'
+        temporary = []
+      }
+      ctx.emit('update:modelValue', state.is_select)
+    };
+    const selected = (i) => {
+      return state.is_select.some((item) => {
+        return item == i;
+      });
+    };
     const focus = () => {
       state.show = true;
     };
@@ -69,6 +90,9 @@ export default {
       focus,
       blur,
       wipe,
+      item,
+      select,
+      selected,
       ...toRefs(state),
     };
   },
@@ -124,21 +148,18 @@ export default {
         outline: none;
       }
     }
-    table {
-      width: 100%;
-      margin-top: 10px;
-      font-size: 12px;
-      tr {
-          line-height: 2;
-          td {
-              cursor: pointer;
-              padding: 5px 0;
-              &:hover {
-                  background-color:  $PrimaryL;
-                  color: #fff;
-              }
-          }
+    .item {
+      cursor: pointer;
+      padding: 5px 0;
+      margin-bottom: 5px;
+      &:hover {
+        background-color: $PrimaryL;
+        color: #fff;
       }
+    }
+    .select {
+      color: #fff;
+      background-color: $PrimaryD;
     }
   }
 }

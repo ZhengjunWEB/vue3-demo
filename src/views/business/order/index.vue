@@ -42,19 +42,23 @@
         </template>
       </bi-table>
     </bi-board>
+    <!-- <input type="text" v-model="ipt">
+    <ipt-box v-model="ipt" /> -->
   </div>
 </template>
 <script >
 import { reactive, ref, toRefs, onMounted, getCurrentInstance } from 'vue'
-// import searchRefs from '@/mixins/searchs/index'
+import iptBox from '@/components/biSearchs/hehe.vue'
 import handle from '@/mixins/utiles/handlePara.js'
 import { order } from '@/network/api/business'
 
 export default {
+  components: { iptBox },
   setup() {
     const state = reactive({
       tableData: [],
-      total: 0
+      total: 0,
+      ipt: ''
     })
     const { ctx } = getCurrentInstance()
     const ins = getCurrentInstance()
