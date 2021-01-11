@@ -22,6 +22,10 @@
       <el-menu-item index="/home/quotation/track">报价单跟踪数据</el-menu-item>
       <el-menu-item index="3-1-3">流转单数据</el-menu-item>
     </el-submenu>
+    <el-menu-item index="/home/charts">
+      <i class="el-icon-menu"></i>
+      <template #title>图表</template>
+    </el-menu-item>
   </el-menu>
 </template>
 <script>
@@ -31,7 +35,7 @@ import router from '@/router'
 export default defineComponent({
   setup() {
     const route = useRoute()
-    const path = computed( () => {
+    const path = computed(() => {
       return route.path
     })
     return {
