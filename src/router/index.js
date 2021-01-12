@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import business from './modules/business'
 import charts from './modules/charts'
+import icon from './modules/icon'
 // import Home from '@/views/Home/index.vue'
 const routes = [
   {
@@ -18,7 +19,8 @@ const routes = [
         component: () => import('@/views/overview/index.vue')
       },
       ...business,
-      ...charts
+      ...charts,
+      ...icon
 
     ]
   },

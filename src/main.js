@@ -11,6 +11,10 @@ import locale from 'element-plus/lib/locale/lang/zh-cn'
 import './assets/css/normalize.css'
 import './assets/css/element.scss'
 
+// icon
+import './assets/font/iconfont.css'
+import './assets/font/iconfont'
+
 // 自定义组件
 import biBase from './components/biBase/index'
 import biSearchs from './components/biSearchs/index'
